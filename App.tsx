@@ -8,29 +8,19 @@ import {
 import UserData from './components/UserData';
 
 function App(){
+  const fruit=()=>{
+    console.warn("Function called");
+  }
   return(
     <View>
-      <Text style ={{fontSize:30}} > Components </Text>
-      {/* use Component */}
-      <UserData/>
-      <RNTU/>
+      <Text style={{fontSize:30}}>Button onPress Event</Text>
+      <Button title='On Press' onPress={fruit} color={'green'}></Button>
+      <Button title='call function use' onPress={()=>fruit()} color={'green'}></Button>
     </View>
       
   );
 };
 
-// create Component
-const RNTU=()=>{
-  return(
-    <View>
-      <Text style ={{fontSize:20}} > Name: RNTU </Text>
-      <Text style ={{fontSize:20}} > Age: 24 </Text>
-      <Text style ={{fontSize:20}} > Email: rntu@gmail.com </Text>
-      <UserData/>
-    </View>
-    
-  );
-}
 
 
 
