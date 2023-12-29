@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { 
+import React, { useState } from 'react';
+import {
   Button,
   Text,
   View
@@ -7,21 +7,20 @@ import {
 
 import UserData from './components/UserData';
 
-function App(){
-  const fruit=()=>{
-    console.warn("Function called");
+function App() {
+  const [name, setName] = useState("Aditya");
+
+  function testname() {
+    setName("admin");
   }
-  return(
+  return (
     <View>
-      <Text style={{fontSize:30}}>Button onPress Event</Text>
-      <Button title='On Press' onPress={fruit} color={'green'}></Button>
-      <Button title='call function use' onPress={()=>fruit()} color={'green'}></Button>
+      <Text style={{ fontSize: 30 }}>{name}</Text>
+      <Button title='update name' onPress={testname}></Button>
     </View>
-      
+
   );
 };
-
-
 
 
 export default App;
