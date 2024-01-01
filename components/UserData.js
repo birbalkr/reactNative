@@ -1,12 +1,32 @@
-import {Text, View} from "react-native";
-const UserData = () => {
+import {
+    Text,
+    View,
+    StyleSheet
+} from "react-native";
+const UserData = (props) => {
+    const item = props.item;
     return (
-        <View>
-            <Text style={{ fontSize: 20 }} > Name: Aditya </Text>
-            <Text style={{ fontSize: 20 }} > Age: 24 </Text>
-            <Text style={{ fontSize: 20 }} > Email: abc@gmail.com </Text>
+        <View style={style.box}>
+            <Text style={style.item} >{item.name}</Text>
+            <Text style={style.item} >{item.email}</Text>
         </View>
-    );
-};
+    )
+}
+// internal style
+const style = StyleSheet.create({
+    item: {
+        color: 'orange',
+        fontSize: 20,
+        flex: 1,
+        margin: 2,
+        textAlign: 'center',
 
+    },
+    box: {
+        flexDirection: 'row',
+        borderColor: 'red',
+        borderWidth: 2,
+        marginBottom: 10
+    }
+});
 export default UserData;
