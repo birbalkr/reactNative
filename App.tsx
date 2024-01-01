@@ -4,69 +4,51 @@ import {
   TextInput,
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  FlatList
 } from "react-native";
 function App() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [passwd, setPasswd] = useState('');
-  const [display, setDisplay]=useState(false);
+  const users = [
+    {
+      id: 1,
+      name: "Aditya"
+    },
+    {
+      id: 2,
+      name: "Sumit"
+    },
+    {
+      id: 3,
+      name: "Rahul"
+    }
+    ,{
+      id: 4,
+      name: "Atul"
+    }
+  ]
 
-  const resetData =()=>{
-    setDisplay(false);
-    setName("");
-    setEmail("");
-    setPasswd("");
-  }
   return (
-    <View>
-      <Text style={{ fontSize: 25 }}>Simple Form in React Native</Text>
-      <TextInput style={style.TextInput}
-        placeholder='Enter User name'
-        onChangeText={(text) => setName(text)}
-        value={name}
-      />
-      <TextInput style={style.TextInput}
-        placeholder='Enter User Email'
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-      />
-      <TextInput style={style.TextInput}
-        placeholder='Enter User Password'
-        onChangeText={(text) => setPasswd(text)}
-        secureTextEntry={true}
-        value={passwd}
-      />
-      <View style={{ marginBottom: 5 }}>
-        <Button color={"green"} title='Print Details'
-        onPress={()=>setDisplay(true)}/>
-      </View>
-      <Button title='Clear Details' onPress={resetData}/>
-      <View>
-        {/* if display is true then Print */}
-        {
-          display ?
-          <View>
-            <Text style={{ fontSize: 20 }}>Name: {name} </Text>
-            <Text style={{ fontSize: 20 }}>Name: {email} </Text>
-            <Text style={{ fontSize: 20 }}>Name: {passwd} </Text>
-          </View>
-          // if display is false then Print
-          :null
-        }
-      </View>
+    <View>  
+      <Text style={{ fontSize: 25 }}>List with Flat List Component</Text>
+      <FlatList
+      data={users}
+      renderItem={({item})=><Text style={style.item}>{item.name}</Text>}
+      keyExtractor={item=>item.id}/>
+
     </View>
   );
 };
 
 // internal style
 const style = StyleSheet.create({
-  TextInput: {
-    color: 'blue',
+  item: {
+    color: '#fff',
     fontSize: 18,
     borderWidth: 2,
     borderColor: 'blue',
-    margin: 10
+    margin: 10,
+    padding:10,
+    backgroundColor:"blue"
   }
 });
 export default App;
