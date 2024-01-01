@@ -71,12 +71,12 @@ function App() {
 
   return (
     <View>  
-      <Text style={{ fontSize: 30 }}>List with map function</Text>
-      <ScrollView>
-      {
-        users.map((item)=><Text style={style.item}>{item.name}</Text>)
-      }
-      </ScrollView>
+      <Text style={{ fontSize: 30 }}>Grid With Dynamic Data</Text>
+      <View style={style.item}>
+        {
+          users.map((item)=><Text style={style.itemtext}>{item.name}</Text>)
+        }
+      </View>
     </View>
   );
 };
@@ -84,13 +84,20 @@ function App() {
 // internal style
 const style = StyleSheet.create({
   item: {
-    color: '#fff',
-    fontSize: 18,
-    borderWidth: 2,
-    borderColor: 'blue',
-    margin: 10,
-    padding:10,
-    backgroundColor:"blue"
+    flex:1,
+    flexDirection:'row',
+    flexWrap:'wrap'
+  },
+  itemtext:{
+    fontSize:25,
+    backgroundColor:'blue',
+    color:'#fff',
+    margin:5,
+    padding:5,
+    width:100,
+    height:100,
+    textAlign:'center',
+    textAlignVertical:'center'
   }
 });
 export default App;
