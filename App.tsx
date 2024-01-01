@@ -5,7 +5,8 @@ import {
   Text,
   View,
   StyleSheet,
-  FlatList
+  FlatList,
+  ScrollView
 } from "react-native";
 function App() {
   const users = [
@@ -24,17 +25,58 @@ function App() {
     ,{
       id: 4,
       name: "Atul"
+    },
+    {
+      id: 3,
+      name: "Rahul"
+    }
+    ,{
+      id: 4,
+      name: "Atul"
+    }
+    ,
+    {
+      id: 3,
+      name: "Rahul"
+    }
+    ,{
+      id: 4,
+      name: "Atul"
+    },
+    {
+      id: 3,
+      name: "Rahul"
+    }
+    ,{
+      id: 4,
+      name: "Atul"
+    },
+    {
+      id: 3,
+      name: "Rahul"
+    }
+    ,{
+      id: 4,
+      name: "Atul"
+    },
+    {
+      id: 3,
+      name: "Rahul"
+    }
+    ,{
+      id: 4,
+      name: "Atul"
     }
   ]
 
   return (
     <View>  
-      <Text style={{ fontSize: 25 }}>List with Flat List Component</Text>
-      <FlatList
-      data={users}
-      renderItem={({item})=><Text style={style.item}>{item.name}</Text>}
-      keyExtractor={item=>item.id}/>
-
+      <Text style={{ fontSize: 30 }}>List with map function</Text>
+      <ScrollView>
+      {
+        users.map((item)=><Text style={style.item}>{item.name}</Text>)
+      }
+      </ScrollView>
     </View>
   );
 };
