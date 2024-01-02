@@ -1,46 +1,31 @@
-import React, { useState } from 'react';
+import React, { Component} from 'react';
 import {
   Text,
   View,
   FlatList,
-  SectionList
+  SectionList,
+  Button,
+  TextInput
 } from "react-native";
-function App() {
-  const users = [
-    {
-      id: 1,
-      name: "Aditya",
-      data:["PHP","Javascript","React js"]
-    },
-    {
-      id: 2,
-      name: "Sumit",
-      data:["PHP","Java","React js"]
-    },
-    {
-      id: 3,
-      name: "Rahul",
-      data:["C++","Java","HTML"]
-    }
-    , {
-      id: 4,
-      name: "Atul",
-      data:["PHP","Python","React js"]
-    }
-  ]
+import Student from './components/Student';
 
-  return (
-    <View style={{padding:15}}>
-      <Text style={{ fontSize: 25 }}>Section List in React Native</Text>
-      <SectionList 
-      sections={users}
-      renderItem={({item})=><Text style={{fontSize:20,marginLeft:20}}>{item}</Text> }
-      renderSectionHeader={({section:{name}})=>(
-        <Text style={{fontSize:25,color:"red"}}>{name}</Text>
-      )}/>
-    </View>
-  );
-};
+class App extends Component{
+  furit=()=>{
+    console.warn("Apple")
+  }
+
+  render(){
+    return(
+      <View >
+        <Text style={{fontSize:30,color:'red'}} >Class Components</Text>
+        <TextInput placeholder='Enter Your Name'/>
+        <Button title='Press'onPress={this.furit}></Button>
+        <Student/>
+      </View>
+    )
+  }
+
+}
 
 
 export default App;
