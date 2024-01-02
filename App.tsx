@@ -2,39 +2,42 @@ import React, { useState } from 'react';
 import {
   Text,
   View,
-  FlatList
+  FlatList,
+  SectionList
 } from "react-native";
-import UserData from './components/UserData';
 function App() {
   const users = [
     {
       id: 1,
       name: "Aditya",
-      email: 'abc@gmail.com'
+      data:["PHP","Javascript","React js"]
     },
     {
       id: 2,
       name: "Sumit",
-      email: 'abc@gmail.com'
+      data:["PHP","Java","React js"]
     },
     {
       id: 3,
       name: "Rahul",
-      email: 'abc@gmail.com'
+      data:["C++","Java","HTML"]
     }
     , {
       id: 4,
       name: "Atul",
-      email: 'abc@gmail.com'
+      data:["PHP","Python","React js"]
     }
   ]
 
   return (
-    <View>
-      <Text style={{ fontSize: 25 }}>Component in loop with FlatList</Text>
-      <FlatList
-        data={users}
-        renderItem={({ item }) => <UserData item={item} />} />
+    <View style={{padding:15}}>
+      <Text style={{ fontSize: 25 }}>Section List in React Native</Text>
+      <SectionList 
+      sections={users}
+      renderItem={({item})=><Text style={{fontSize:20,marginLeft:20}}>{item}</Text> }
+      renderSectionHeader={({section:{name}})=>(
+        <Text style={{fontSize:25,color:"red"}}>{name}</Text>
+      )}/>
     </View>
   );
 };
