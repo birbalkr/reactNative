@@ -10,17 +10,24 @@ import {
 import Student from './components/Student';
 
 class App extends Component{
-  furit=()=>{
-    console.warn("Apple")
+  constructor(){
+    super();
+    this.state={
+      name:"Aditya"
+    }
+  }
+  updateName(text){
+    this.setState({name:text})
   }
 
   render(){
     return(
       <View >
-        <Text style={{fontSize:30,color:'red'}} >Class Components</Text>
-        <TextInput placeholder='Enter Your Name'/>
-        <Button title='Press'onPress={this.furit}></Button>
-        <Student/>
+        <Text style={{fontSize:30,color:'red'}} >{this.state.name}</Text>
+        <TextInput placeholder='Enter Your Name'
+        onChangeText={(text)=>this.updateName(text)}/>
+        <Button title='Press'></Button>
+        <Student name={this.state.name} />
       </View>
     )
   }

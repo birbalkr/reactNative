@@ -12,7 +12,7 @@ class Student extends Component {
     render() {
         return (
             <View >
-                <Text style={{ fontSize: 30, color: 'green' }} >Student Components</Text>
+                <Text style={{ fontSize: 30, color: 'green' }} >Student Nmae: {this.props.name}</Text>
             </View>
         )
     }
