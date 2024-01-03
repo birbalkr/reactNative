@@ -2,22 +2,26 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
+    TouchableHighlight,
     View
 } from "react-native";
 
 const App = () => {
     return (
-        <View style={style.main}>
-            <Text style={{ fontSize: 25, color: 'red' }}>Responsive UI With flex</Text>
-            <View style={style.box1}>
-                <View style={style.innerbox}></View>
-                <View style={style.innerbox1}></View>
-                <View style={style.innerbox2}></View>
-
+            
+            <View style={style.main}>
+                <Text style={{ fontSize: 25, color: 'red' }}>TouchableHighlight Button</Text>
+                <TouchableHighlight>
+                    <Text style={[style.button,style.Buttontext]}>Button</Text>
+                </TouchableHighlight>
+                <TouchableHighlight>
+                    <Text style={[style.Success, style.Buttontext]}>Success</Text>
+                </TouchableHighlight>
+                <TouchableHighlight>
+                    <Text style={[style.Error, style.Buttontext]}>Warning</Text>
+                </TouchableHighlight>
             </View>
-            <View style={style.box2}></View>
-            <View style={style.box3}></View>
-        </View>
+        
     )
 };
 
@@ -25,39 +29,45 @@ const style=StyleSheet.create({
     main:{
         flex:1
     },
-    box1:{
-        flex: 1, 
-        backgroundColor:'red',
-        flexDirection:'row'
-    }
-    ,
-    box2:{
-        flex: 1, 
-        backgroundColor:'green'
-    }
-    ,
-    box3:{
-        flex: 1, 
-        backgroundColor:'blue'
+    button:{
+        backgroundColor:'#bbb',
+        fontSize:30,
+        textAlign:'center',
+        padding:10,
+        margin:10,
+        borderRadius:10,
+        shadowColor:'black',
+        elevation:10,
+        shadowOpacity:1
     },
-    innerbox:{
-        flex:1,
-        backgroundColor:'skyblue',
-        margin:10
+    Success:{
+        backgroundColor:'green',
+        fontSize:30,
+        textAlign:'center',
+        padding:10,
+        margin:10,
+        borderRadius:10,
+        shadowColor:'black',
+        elevation:10,
+        shadowOpacity:1
+    },
+    Error:{
+        backgroundColor:'lightblue',
+        fontSize:30,
+        textAlign:'center',
+        padding:10,
+        margin:10,
+        borderRadius:10,
+        shadowColor:'black',
+        elevation:10,
+        shadowOpacity:1
+    },
+    Buttontext:{
+        color:'#fff'
     }
-    ,
-    innerbox1:{
-        flex:1,
-        backgroundColor:'yellow',
-        margin:10
-    }
-    ,
-    innerbox2:{
-        flex:1,
-        backgroundColor:'orange',
-        margin:10
-    }
+
 })
+
 export default App;
 
 // npx react-native start
