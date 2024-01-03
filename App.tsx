@@ -8,32 +8,52 @@ import {
 } from "react-native";
 
 const App = () => {
+    const skill=[
+        {
+            id:1,
+            name:'Java'
+        },
+        {
+            id:2,
+            name:'C++'
+        },
+        {
+            id:3,
+            name:'React'
+        },
+        {
+            id:4,
+            name:'JavaScript'
+        },
+        {
+            id:5,
+            name:'PHP'
+        },
+        {
+            id:6,
+            name:'Python'
+        },
+    ]
     const [radio, setRadio]=useState(1)
     return (
             
             <View style={style.main}>
                 
-                <Text style={{ fontSize: 25, color: 'red' }}>Radio Button</Text>
-                <TouchableOpacity onPress={()=>setRadio(1)}>
+                <Text style={{ fontSize: 25, color: 'red' }}>Dynamic Radio Button</Text>
+                {
+                    skill.map((item,index)=> <TouchableOpacity 
+                    key={index}
+                    onPress={()=>setRadio(item.id)}>
                     <View style={style.radiorap}>
                         <View style={style.radio}>
                             {
-                                radio ===1 ?  <View style={style.radiobg}></View> :null
+                                radio ===item.id ?  <View style={style.radiobg}></View> :null
                             }
                         </View>
-                        <Text>Radio 1</Text>
+                        <Text>{item.name}</Text>
                     </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>setRadio(2)}>
-                    <View style={style.radiorap}>
-                        <View style={style.radio}>
-                        {
-                                radio ===2 ?  <View style={style.radiobg}></View> :null
-                        }
-                        </View>
-                        <Text>Radio 1</Text> 
-                    </View>
-                </TouchableOpacity>
+                </TouchableOpacity>)
+                }
             </View>
         
     )
