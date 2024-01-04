@@ -1,42 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-    ActivityIndicator,
-    Button,
+    Pressable,
     StyleSheet,
     Text,
     View
 } from "react-native";
 
 const App = () => {
-    const [show ,setShow]=useState(false)
-    const displayLoader=()=>{
-        setShow(true);
-
-        setTimeout(() => {
-            setShow(false)
-        }, 3000);
-
-        // api call in 3s
-    }
     return (
-            <View style={style.main}>
-                <Text style={{ fontSize: 25, color: 'red' }}>Activity Indicator</Text>
-                {/* <ActivityIndicator size={"large"} color={'red'} animating={true}/>
-                <ActivityIndicator size={200} color={'blue'} animating={false}/> */}
-                <ActivityIndicator size={100} color={'green'} animating={show}/>
-                <Button title='show loder' onPress={displayLoader}/>
-            </View>
-        
+        <View style={style.main}>
+            <Text style={{ fontSize: 25, color: 'red' }}>Pressable Button</Text>
+            <Pressable
+            onPress={()=>console.warn('onPress')}
+            onLongPress={()=>console.warn('longPress')}
+            onPressIn={()=>console.warn('pressin')}
+            onPressOut={()=>console.warn('pressout')}
+            >
+                <Text style={style.buttonview}>Pressable</Text>
+            </Pressable>
+        </View>
+
     )
 };
 
-const style=StyleSheet.create({
-    main:{
-        flex:1,
-        margin:10,
-        alignItems:'center',
+const style = StyleSheet.create({
+    main: {
+        flex: 1,
         justifyContent:'center'
     },
+    buttonview: {
+        backgroundColor:'blue',
+        color:'#fff',padding:10,
+        margin:10,
+        borderRadius:10,
+        fontSize:20,
+        textAlign:'center',
+        shadowColor:"red",
+        elevation:20
+    },
+    
 })
 
 export default App;

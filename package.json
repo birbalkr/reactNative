@@ -13,6 +13,7 @@
     "@expo/vector-icons": "^13.0.0",
     "react": "18.2.0",
     "react-native": "0.73.1",
+    "react-native-code-editor": "^0.0.0",
     "react-native-vector-icons": "^10.0.3"
   },
   "devDependencies": {
