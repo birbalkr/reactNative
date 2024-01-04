@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+    Button,
     Pressable,
+    StatusBar,
     StyleSheet,
     Text,
     View
 } from "react-native";
 
 const App = () => {
+    const [hide, setHide]=useState(false)
+    const [barstyle,setBarStyle]=useState('defult')
     return (
         <View style={style.main}>
-            <Text style={{ fontSize: 25, color: 'red' }}>Pressable Button</Text>
-            <Pressable
-            onPress={()=>console.warn('onPress')}
-            onLongPress={()=>console.warn('longPress')}
-            onPressIn={()=>console.warn('pressin')}
-            onPressOut={()=>console.warn('pressout')}
-            >
-                <Text style={style.buttonview}>Pressable</Text>
-            </Pressable>
+            <Text style={{ fontSize: 25, color: 'red' }}>Status Bar</Text>
+            <StatusBar 
+            backgroundColor="red"
+            barStyle={barstyle}
+            hidden={hide}   
+            />
+            <Button title='Toggle Status bar' onPress={()=>setHide(!hide)}></Button>
+            <Button title='Update Style' onPress={()=>setBarStyle('dark-content')}></Button>
         </View>
 
     )
@@ -26,7 +29,8 @@ const App = () => {
 const style = StyleSheet.create({
     main: {
         flex: 1,
-        justifyContent:'center'
+        justifyContent:'center',
+        alignItems:'center',
     },
     buttonview: {
         backgroundColor:'blue',
@@ -38,7 +42,6 @@ const style = StyleSheet.create({
         shadowColor:"red",
         elevation:20
     },
-    
 })
 
 export default App;
