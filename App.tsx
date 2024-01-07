@@ -1,56 +1,37 @@
-import React, { useState } from 'react';
-import {
-    Button,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View
-} from "react-native";
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const App = () => {
-    const [show,setShow]=useState(false)
-
+function HomeScreen() {
     return (
-        <View style={styles.conatiner}>
-            <Text>custom modal</Text>
-            {
-                show?
-                <View style={styles.modal}>
-            <View style={styles.body}>
-                <Text>Some Text</Text>
-                <Button title='Close' onPress={()=>setShow(false)}/>
-            </View>
-            </View>
-            :null
-            }
-
-            <Button title='Click' onPress={()=>setShow(true)}/>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Home Screen</Text>
         </View>
-    )
-};
+    );
+}
+const Login=(props)=> {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Home Screen</Text>
+            <Button title='Home Screen' onPress={()=>props.navigation.navigate('Home')}/>
+        </View>
+    );
+}
 
-const styles = StyleSheet.create({
-    conatiner: {
-        flex: 1,
-        justifyContent: 'flex-end'
-    },
-    modal: {
-        flex: 1,
-        backgroundColor: 'rgba(50,50,50,0.5)',
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    body:{
-        backgroundColor:'#fff',
-        width:300,
-        height:300,
-        padding:20,
-        justifyContent:'flex-end',
-        borderRadius:10
-    }
-})
+const Stack = createNativeStackNavigator();
+
+function App() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Home" component={HomeScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
+
 
 export default App;
-
-// npx react-native start
