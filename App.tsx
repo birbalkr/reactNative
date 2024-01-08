@@ -11,19 +11,12 @@ function App() {
     const [errorage, setErrorAge] = useState(false);
     const [erroremail, setErrorEmail] = useState(false);
     const Savedata = async () => {
-        if (!name) {
-            setErrorName(true)
-        } else { setErrorName(false) }
 
-        if (!age) {
-            setErrorAge(true)
-        } else { setErrorAge(false) }
-        if (!email) {
-            setErrorEmail(true)
-        } else { setErrorEmail(false) }
-        if (!name || !age || !email) {
-            return false
-        }
+        name =="" ? setErrorName(true) : setErrorName(false)
+        age == 0 ? setErrorAge(true) : setErrorAge(false)
+        email =="" ? setErrorEmail(true) : setErrorEmail(false)
+        if(!name || !age){ return false}
+
         const url = "http://192.168.43.106:3000/users";
         let result = await fetch(url, {
             method: "POST",
@@ -37,7 +30,7 @@ function App() {
 
     return (
         <View >
-            <Text style={{ fontSize: 20 }}>Form with input field</Text>
+            <Text style={{ fontSize: 20 }}>Conditional (ternary) operator</Text>
             <TextInput style={styles.input} value={name} onChangeText={(text) => setName(text)} placeholder='Enter name' />
             {
                 errorname ? <Text style={styles.errortext}>Enter Valid Name</Text>
