@@ -1,36 +1,33 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-
-const Tab = createMaterialTopTabNavigator();
 
 function App() {
+    const [data,setData]=useState(undefined);
+    const getAPIData = async ()=>{
+        const url="https://jsonplaceholder.typicode.com/posts";
+        let result= await fetch(url);
+        result = await result.json();
+        setData(result)
+    }
+    useEffect(()=>{
+        getAPIData();
+    },[])
     return (
-        <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen name='Login' component={Login} />
-                <Tab.Screen name='Signup' component={SignUp} />
-            </Tab.Navigator>
-        </NavigationContainer>
+        <View >
+            <Text style={{fontSize:20}}>API Call</Text>
+            {
+                data?<View>
+                    <Text style={{fontSize:29, margin:12}}>{data.id}</Text>
+                    <Text style={{fontSize:29, margin:12}}>{data.title}</Text>
+                    <Text style={{fontSize:29, margin:12, color:'red'}}>{data.body}</Text>
+                </View>
+                :null
+            }
+        </View>
     )
 };
-const Login = () => {
-    return (
-        <View>
-            <Text>Login</Text>
-        </View>
-    )
-}
-const SignUp = () => {
-    return (
-        <View>
-            <Text>SignUp</Text>
-        </View>
-    )
-}
+
 
 
 
