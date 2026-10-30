@@ -6,33 +6,45 @@ import {
   Dimensions,
   Button,
   Alert,
+  FlatList,
 } from "react-native";
+
+import userdata from "./data.json";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <View style={styles.mainBox}>
-        <Text style={styles.textSize}>Text View</Text>
-      </View>
-
-      <View>
-        <Button
-          title="click"
-          onPress={() => Alert.alert("Invalid", "date is invalid",[
-            {
-              text:"cancle",
-              onPress:()=>console.log("cancle")
-            },
-            {
-              text:"ok",
-              onPress:()=>{console.log("ok");
-              }
-            }
-          ])}
-        />
-      </View>
+    <View>
+      <StatusBar hidden />
+      <FlatList
+        style={{ marginTop: 25, marginLeft: 10 }}
+        data={userdata}
+        ListHeaderComponent={
+          <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 20 }}>
+            User List
+          </Text>
+        }
+        ListFooterComponent={
+          <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 20 }}>
+            Footer List
+          </Text>
+        }
+        ListEmptyComponent={
+          <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 20 }}>
+            user
+          </Text>
+        }
+        initialNumToRender={10}
+        windowSize={5}
+        renderItem={({ item }) => {
+          console.log(item.id);
+          return (
+            <View key={item.id} style={styles.container}>
+              <Text>Name:{item.name}</Text>
+              <Text>Age:{item.age}</Text>
+            </View>
+          );
+        }}
+      />
     </View>
   );
 }
@@ -44,12 +56,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 10,
+    borderStyle: "dotted",
+    borderWidth: 2,
+    marginBottom: 10,
   },
   mainBox: {
-    width: boxWidth > 600 ? "80%" : "90%",
-    height: boxHeight > 500 ? "80%" : "90%",
+    width: boxWidth > 600 ? "20%" : "30%",
+    height: boxHeight > 500 ? "20%" : "30%",
     backgroundColor: "pink",
   },
   textSize: {
