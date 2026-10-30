@@ -1,5 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Button,
+  Alert,
+} from "react-native";
 
 export default function App() {
   return (
@@ -8,6 +15,23 @@ export default function App() {
       <StatusBar style="auto" />
       <View style={styles.mainBox}>
         <Text style={styles.textSize}>Text View</Text>
+      </View>
+
+      <View>
+        <Button
+          title="click"
+          onPress={() => Alert.alert("Invalid", "date is invalid",[
+            {
+              text:"cancle",
+              onPress:()=>console.log("cancle")
+            },
+            {
+              text:"ok",
+              onPress:()=>{console.log("ok");
+              }
+            }
+          ])}
+        />
       </View>
     </View>
   );
