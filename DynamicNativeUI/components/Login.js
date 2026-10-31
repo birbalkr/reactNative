@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
+import { View, Text, TextInput, StyleSheet, Pressable, KeyboardAvoidingView } from "react-native";
 import React, { useState } from "react";
 
 const LoginForm = () => {
@@ -6,7 +6,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
 
   return (
-    <View style={styles.loginContainer}>
+    <KeyboardAvoidingView behavior="padding" style={styles.loginContainer}>
       <View style={styles.loginForm}>
         <Text style={styles.title}>Welcome back</Text>
         <Text style={styles.subtitle}>Sign in to continue to your account</Text>
@@ -35,7 +35,7 @@ const LoginForm = () => {
           <Text style={styles.submitButtonText}>Submit</Text>
         </Pressable>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
