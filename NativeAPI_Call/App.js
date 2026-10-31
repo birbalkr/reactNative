@@ -1,19 +1,29 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   const [users, setusers] = useState([]);
-
+  const [loading, setloading] = useState(true);
   useEffect(() => {
     getALlUser();
+    setloading(false)
   }, []);
 
   const getALlUser = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
     const allUser = await res.json();
     setusers(allUser);
   };
+
+  if(loading){
+    return(
+      <SafeAreaView>
+        <ActivityIndicator size={"large"} color={'blue'}/>
+        <Text>Loading...........</Text>
+      </SafeAreaView>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,11 +40,11 @@ export default function App() {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <View style={styles.avatar}>
-              <Text style={styles.avatarText}>{item.name.charAt(0)}</Text>
+              <Text style={styles.avatarText}>{item.title.charAt(0)}</Text>
             </View>
             <View style={styles.details}>
-              <Text style={styles.name}>{item.name}</Text>
-              <Text style={styles.email}>{item.email}</Text>
+              <Text style={styles.name}>{item.title}</Text>
+              <Text style={styles.email}>{item.body}</Text>
             </View>
           </View>
         )}
